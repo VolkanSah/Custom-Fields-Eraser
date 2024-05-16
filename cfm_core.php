@@ -36,7 +36,9 @@ function custom_fields_manager_page() {
     // Render the plugin page
     echo '<div class="wrap">';
     echo '<h1>Custom Fields Manager</h1>';
-    echo '<p>This plugin allows you to view and delete custom fields in your WordPress database.</p>';
+    echo '<p>This plugin allows you to view and delete custom fields in your WordPress database. </p>';   
+    echo '<p> **Warning: Deleting custom fields can potentially break your site. This plugin is intended for experienced administrators only.**</p>';
+    echo '<p>If you love my work, support me with ratting this plugin on <a href="https://github.com/VolkanSah/Custom-Fields-Manager" target="blank">Github</a> or on <a href="https://de.wordpress.org/plugins/custom-fields-manager" target="blank">WordPress</a> </p>';  
     echo '<table class="wp-list-table widefat striped" id="custom-fields-table">';
     echo '<thead><tr><th>Custom Field</th><th>Action</th></tr></thead>';
     echo '<tbody>';
