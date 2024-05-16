@@ -1,21 +1,62 @@
-# Custom-Fields-Manager for your WordPress website
-Delete custom fields in your WordPress database
+# Custom-Fields-Manager for WordPress
 
-This plugin adds a new "Custom Fields" menu item in the WordPress admin menu. When the user clicks on it, the plugin displays a list of all custom fields in the database, excluding some internal fields like _edit_last and _edit_lock.
+## Overview
 
-For each custom field, the plugin provides a "Delete" button that allows you to remove the custom field from the database.
+The Custom-Fields-Manager plugin adds a new "Custom Fields" menu item in the WordPress admin menu. It provides an interface to list and delete custom fields from the WordPress database, excluding some internal fields like `_edit_last` and `_edit_lock`.
 
-To use this plugin, simply install and activate it in your WordPress site. Then, go to the "Custom Fields" menu item in the admin menu to manage your custom fields.
+**Important:** This plugin is designed for experienced administrators. The list of custom fields can be very long, and the initial load time might be significant depending on the number of custom fields.
 
+## Features
 
-### erledigt
+- **Custom Fields Management:** View and delete custom fields from the WordPress database.
+- **Permission Verification:** Ensures that only users with `manage_options` capability can access the plugin's functionalities.
+- **Input Sanitization:** Utilizes `sanitize_text_field()` to sanitize the `$meta_key` before it is used in SQL queries or displayed.
+- **WordPress Functions:** Employs WordPress functions like `$wpdb->get_results()` and `$wpdb->delete()` to handle database interactions securely.
+- **AJAX Security:** Uses `check_ajax_referer()` to validate the security token (Nonce) for AJAX requests.
 
+## Installation
 
-    Überprüfung der Berechtigungen: Die Funktionen custom_fields_manager_menu() und load_custom_fields_callback() / delete_custom_field_callback() prüfen, ob der Benutzer die erforderlichen Berechtigungen (in diesem Fall manage_options) hat, bevor sie ausgeführt werden.
+1. Download the plugin and upload it to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
 
-    Sanitisierung der Eingaben: Die Funktion sanitize_text_field() wird verwendet, um den $meta_key zu bereinigen, bevor er in SQL-Abfragen oder bei der Anzeige verwendet wird.
+## Usage
 
-    Verwendung von WordPress-Funktionen: Anstatt direkt auf die Datenbank zuzugreifen, werden WordPress-Funktionen wie $wpdb->get_results() und $wpdb->delete() verwendet, die automatisch Sicherheitsmaßnahmen wie Escaping und Vorbereitung der Abfragen durchführen.
+1. After activation, navigate to the "Custom Fields" menu item in the WordPress admin menu.
+2. The plugin will display a list of all custom fields in the database.
+3. For each custom field, you will find a "Delete" button that allows you to remove the custom field from the database.
 
-    Verwendung von AJAX-Sicherheitsmaßnahmen: Die AJAX-Funktionen verwenden check_ajax_referer(), um die Gültigkeit des Sicherheitstokens (Nonce) zu überprüfen, bevor sie ausgeführt werden.
+## Security Features
+
+1. **Permission Verification:** 
+    - Functions such as `custom_fields_manager_menu()`, `load_custom_fields_callback()`, and `delete_custom_field_callback()` check if the user has the required `manage_options` capability before execution.
+
+2. **Sanitization of Inputs:**
+    - The function `sanitize_text_field()` is used to clean the `$meta_key` before using it in SQL queries or displaying it.
+
+3. **WordPress Functions:**
+    - Instead of direct database access, WordPress functions like `$wpdb->get_results()` and `$wpdb->delete()` are used, which inherently apply security measures such as escaping and query preparation.
+
+4. **AJAX Security Measures:**
+    - AJAX functions use `check_ajax_referer()` to verify the validity of the security token (Nonce) before execution.
+
+## Notes
+
+- This plugin is intended for experienced WordPress administrators.
+- The list of custom fields can be extensive, leading to longer load times on the first call.
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -am 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Create a new Pull Request.
+
+## License
+
+This plugin is licensed under the [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html).
+
+## Support
+
+For support and feature requests, please open an issue on the [GitHub repository](https://github.com/your-repository).
 
