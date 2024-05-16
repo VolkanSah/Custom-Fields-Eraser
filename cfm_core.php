@@ -1,8 +1,9 @@
 <?php
 /**
  * Plugin Name: Custom Fields Manager
-* Plugin URI:        https://github.com/VolkanSah/Custom-Fields-Manager/
+ * Plugin URI:        https://github.com/VolkanSah/Custom-Fields-Manager/
  * Description: Manage custom fields in your WordPress database
+ * Version: 2.0
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            S. Volkan Kücükbudak
