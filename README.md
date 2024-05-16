@@ -1,5 +1,5 @@
-# Custom-Fields-Manager
-Manage custom fields in your WordPress database
+# Custom-Fields-Manager for your WordPress website
+Delete custom fields in your WordPress database
 
 This plugin adds a new "Custom Fields" menu item in the WordPress admin menu. When the user clicks on it, the plugin displays a list of all custom fields in the database, excluding some internal fields like _edit_last and _edit_lock.
 
