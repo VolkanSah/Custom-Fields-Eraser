@@ -60,7 +60,11 @@ function custom_fields_manager_page() {
     // Handle delete action
     if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['meta_key'])) {
         $meta_key = sanitize_text_field($_GET['meta_key']);
-        $wpdb->delete($wpdb->postmeta, array('meta_key' => $meta_key), array('%s'));
-        echo '<div class="notice notice-success is-dismissible"><p>Custom field "' . $meta_key . '" has been deleted.</p></div>';
+        $result = $wpdb->delete($wpdb->postmeta, array('meta_key' => $meta_key), array('%s'));
+        if ($result === false) {
+            echo '<div class="notice notice-error is-dismissible"><p>Error deleting custom field "' . $meta_key . '".</p></div>';
+        } else {
+            echo '<div class="notice notice-success is-dismissible"><p>Custom field "' . $meta_key . '" has been deleted.</p></div>';
+        }
     }
 }
