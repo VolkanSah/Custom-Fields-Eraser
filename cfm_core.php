@@ -15,8 +15,11 @@
  * Domain Path:       /languages
  */
 
-// Add the admin menu
+/// Add the admin menu
 add_action('admin_menu', 'custom_fields_manager_menu');
+
+// Add AJAX action
+add_action('wp_ajax_delete_custom_field', 'delete_custom_field_callback');
 
 function custom_fields_manager_menu() {
     add_menu_page(
@@ -28,44 +31,36 @@ function custom_fields_manager_menu() {
     );
 }
 
-// Render the plugin page
 function custom_fields_manager_page() {
-    global $wpdb;
-
-    // Get all custom fields
-    $custom_fields = $wpdb->get_results("
-        SELECT DISTINCT meta_key
-        FROM {$wpdb->postmeta}
-        WHERE meta_key NOT IN ('_edit_last', '_edit_lock')
-    ");
-
-    // Display the custom fields
+    // Render the plugin page
     echo '<div class="wrap">';
     echo '<h1>Custom Fields Manager</h1>';
     echo '<p>This plugin allows you to view and delete custom fields in your WordPress database.</p>';
-    echo '<table class="wp-list-table widefat striped">';
+    echo '<table class="wp-list-table widefat striped" id="custom-fields-table">';
     echo '<thead><tr><th>Custom Field</th><th>Action</th></tr></thead>';
     echo '<tbody>';
-
-    foreach ($custom_fields as $field) {
-        echo '<tr>';
-        echo '<td>' . $field->meta_key . '</td>';
-        echo '<td><a href="?page=custom-fields-manager&action=delete&meta_key=' . $field->meta_key . '" class="button button-danger">Delete</a></td>';
-        echo '</tr>';
-    }
-
     echo '</tbody>';
     echo '</table>';
     echo '</div>';
 
-    // Handle delete action
-    if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['meta_key'])) {
-        $meta_key = sanitize_text_field($_GET['meta_key']);
-        $result = $wpdb->delete($wpdb->postmeta, array('meta_key' => $meta_key), array('%s'));
-        if ($result === false) {
-            echo '<div class="notice notice-error is-dismissible"><p>Error deleting custom field "' . $meta_key . '".</p></div>';
-        } else {
-            echo '<div class="notice notice-success is-dismissible"><p>Custom field "' . $meta_key . '" has been deleted.</p></div>';
-        }
+    // Enqueue JavaScript
+    wp_enqueue_script('custom-fields-manager', plugin_dir_url(__FILE__) . 'assets/js/custom-fields-manager.js', array('jquery'), '1.0', true);
+    wp_localize_script('custom-fields-manager', 'cfmData', array(
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('delete_custom_field')
+    ));
+}
+
+function delete_custom_field_callback() {
+    check_ajax_referer('delete_custom_field', 'security');
+
+    $meta_key = sanitize_text_field($_POST['meta_key']);
+    global $wpdb;
+    $result = $wpdb->delete($wpdb->postmeta, array('meta_key' => $meta_key), array('%s'));
+
+    if ($result === false) {
+        wp_send_json_error(array('message' => 'Error deleting custom field "' . $meta_key . '".'));
+    } else {
+        wp_send_json_success(array('message' => 'Custom field "' . $meta_key . '" has been deleted.'));
     }
 }
