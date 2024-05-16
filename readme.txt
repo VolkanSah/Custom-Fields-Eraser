@@ -1,6 +1,6 @@
 === Custom Fields Eraser ===
 Contributors: volkansah
-Tags: custom fields, delete, admin tools, database management, security, tunning
+Tags: custom fields, delete, admin tools, database management, security, tuning
 Requires at least: 4.6
 Tested up to: 5.8
 Stable tag: 1.0
@@ -12,9 +12,11 @@ Custom Fields Eraser allows experienced administrators to view and delete custom
 
 == Description ==
 
-Custom Fields Eraser adds a new "Custom Fields" menu item in the WordPress admin menu. It provides an interface to list and delete custom fields from the WordPress database, excluding some internal fields like `_edit_last` and `_edit_lock`.
+Custom Fields Eraser is a powerful tool for WordPress administrators to manage and clean up custom fields in the database. It adds a new "Custom Fields" menu item in the WordPress admin menu, allowing users to view and delete custom fields, excluding some internal fields like `_edit_last` and `_edit_lock`.
 
 **Warning: Deleting custom fields can potentially break your site. This plugin is intended for experienced administrators only.**
+
+Over time, as you install and test various plugins and themes, your WordPress database can become cluttered with numerous custom fields. These fields can bloat your database, impacting performance and making it difficult to manage your data. Custom Fields Eraser helps you identify and remove unnecessary custom fields, keeping your database clean and optimized.
 
 = Features =
 
@@ -55,5 +57,4 @@ Initial release.
 
 == Support ==
 
-For support and feature requests, please open an issue on the [GitHub repository](https://github.com/VolkanSah/Custom-Fields-Eraser).
-
+For support and feature requests, please open an issue on the [GitHub repository](https://github.com/your-repository).
