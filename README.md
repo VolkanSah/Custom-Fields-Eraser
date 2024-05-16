@@ -77,7 +77,7 @@ The Custom-Fields-Manager plugin adds a new "Custom Fields" menu item in the Wor
 This plugin is licensed under the [GPLv3 or later](https://www.gnu.org/licenses/gpl-3.0.html).
 
 ## Support
--> **For support and feature requests, please open an issue on the [GitHub repository](https://github.com/VolkanSah/Custom-Fields-Manager/issues).**
+- **For support and feature requests, please open an issue on the [GitHub repository](https://github.com/VolkanSah/Custom-Fields-Manager/issues).**
 - If you appreciate my work, please consider [becoming a 'Sponsor'](https://github.com/sponsors/volkansah), giving a :star: to my projects, or following me. 
 ### Credits
 - [VolkanSah on Github](https://github.com/volkansah)
