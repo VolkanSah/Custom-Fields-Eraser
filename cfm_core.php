@@ -3,7 +3,7 @@
  * Plugin Name: Custom Fields Manager
  * Plugin URI:        https://github.com/VolkanSah/Custom-Fields-Manager/
  * Description: Manage custom fields in your WordPress database
- * Version: 2.0
+ * Version: 1.0
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            S. Volkan Kücükbudak
@@ -15,10 +15,11 @@
  * Domain Path:       /languages
  */
 
-/// Add the admin menu
+// Add the admin menu
 add_action('admin_menu', 'custom_fields_manager_menu');
 
-// Add AJAX action
+// Add AJAX actions
+add_action('wp_ajax_load_custom_fields', 'load_custom_fields_callback');
 add_action('wp_ajax_delete_custom_field', 'delete_custom_field_callback');
 
 function custom_fields_manager_menu() {
@@ -47,12 +48,25 @@ function custom_fields_manager_page() {
     wp_enqueue_script('custom-fields-manager', plugin_dir_url(__FILE__) . 'assets/js/custom-fields-manager.js', array('jquery'), '1.0', true);
     wp_localize_script('custom-fields-manager', 'cfmData', array(
         'ajaxUrl' => admin_url('admin-ajax.php'),
-        'nonce' => wp_create_nonce('delete_custom_field')
+        'nonce' => wp_create_nonce('custom_fields_manager')
     ));
 }
 
+function load_custom_fields_callback() {
+    check_ajax_referer('custom_fields_manager', 'security');
+
+    global $wpdb;
+    $custom_fields = $wpdb->get_results("
+        SELECT DISTINCT meta_key
+        FROM {$wpdb->postmeta}
+        WHERE meta_key NOT IN ('_edit_last', '_edit_lock')
+    ");
+
+    wp_send_json_success($custom_fields);
+}
+
 function delete_custom_field_callback() {
-    check_ajax_referer('delete_custom_field', 'security');
+    check_ajax_referer('custom_fields_manager', 'security');
 
     $meta_key = sanitize_text_field($_POST['meta_key']);
     global $wpdb;
