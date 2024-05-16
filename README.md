@@ -14,6 +14,8 @@
 8. [License](#license)
 9. [Support](#support)
 
+![Custums Fields Manager](assets/custom_field_manager.png)
+
 ## Overview
 
 The Custom-Fields-Manager plugin adds a new "Custom Fields" menu item in the WordPress admin menu. It provides an interface to list and delete custom fields from the WordPress database, excluding some internal fields like `_edit_last` and `_edit_lock`.
