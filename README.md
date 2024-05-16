@@ -1,4 +1,4 @@
-# Custom-Fields-Eraser for WordPress
+# Custom-Fields-Eraser (Manager) for WordPress
 **Warning: Deleting custom fields can potentially break your site. This plugin is intended for experienced administrators only.**
 
 
