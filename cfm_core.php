@@ -7,7 +7,7 @@
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            S. Volkan Kücükbudak
- * Author URI:        https://volkansah.github.com
+ * Author URI:        https://github.com/volkansah
  * License:           GPLv3
  * License URI:       https://aicodecraft.io/license
  * Update URI:        https://github.com/VolkanSah/Custom-Fields-Manager//latest.zip
