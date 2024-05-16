@@ -1,5 +1,6 @@
 # Custom-Fields-Manager for WordPress
 **Warning: Deleting custom fields can potentially break your site. This plugin is intended for experienced administrators only.**
+![Custums Fields Manager](assets/custom_field_manager.png)
 
 
 ### Table of Contents
@@ -14,7 +15,7 @@
 8. [License](#license)
 9. [Support](#support)
 
-![Custums Fields Manager](assets/custom_field_manager.png)
+
 
 ## Overview
 
