@@ -17,11 +17,9 @@
 8. [License](#license)
 9. [Support](#support)
 
-
-
 ## Overview
 
-The Custom-Fields-Manager plugin adds a new "Custom Fields" menu item in the WordPress admin menu. It provides an interface to list and delete custom fields from the WordPress database, excluding some internal fields like `_edit_last` and `_edit_lock`.
+Custom Fields Eraser is a powerful tool for WordPress administrators to manage and clean up custom fields in the database. It adds a new "Custom Fields" menu item in the WordPress admin menu, allowing users to view and delete custom fields, excluding some internal fields like `_edit_last` and `_edit_lock`.
 
 **Important:** This plugin is designed for experienced administrators. The list of custom fields can be very long, and the initial load time might be significant depending on the number of custom fields.
 
@@ -32,6 +30,10 @@ The Custom-Fields-Manager plugin adds a new "Custom Fields" menu item in the Wor
 - **Input Sanitization:** Utilizes `sanitize_text_field()` to sanitize the `$meta_key` before it is used in SQL queries or displayed.
 - **WordPress Functions:** Employs WordPress functions like `$wpdb->get_results()` and `$wpdb->delete()` to handle database interactions securely.
 - **AJAX Security:** Uses `check_ajax_referer()` to validate the security token (Nonce) for AJAX requests.
+
+## Why Use This Plugin
+
+Over time, as you install and test various plugins and themes, your WordPress database can become cluttered with numerous custom fields. These fields can bloat your database, impacting performance and making it difficult to manage your data. Custom Fields Eraser helps you identify and remove unnecessary custom fields, keeping your database clean and optimized.
 
 ## Installation
 
@@ -70,6 +72,7 @@ The Custom-Fields-Manager plugin adds a new "Custom Fields" menu item in the Wor
 3. Commit your changes (`git commit -am 'Add some feature'`).
 4. Push to the branch (`git push origin feature-branch`).
 5. Create a new Pull Request.
+
 
 
 ## License
