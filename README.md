@@ -1,5 +1,5 @@
 # Custom-Fields-Eraser (Manager) for WordPress
-###### Advanced WordPress (mini) Plugins
+###### Checked 27.05-2025
 
 ![Custums Fields Manager](assets/custom_field_manager.png)
 
